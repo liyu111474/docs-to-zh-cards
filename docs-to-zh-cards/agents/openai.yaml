@@ -1,0 +1,6 @@
+interface:
+  display_name: "英文文档完整翻译与知识卡片"
+  short_description: "按原文顺序完整翻译英文技术文档，保留官网结构与示例，穿插可隐藏的补充知识卡片。"
+  default_prompt: "使用 $docs-to-zh-cards 按原文顺序完整翻译我提供的英文文档，保留官网布局和全部示例，只在需要处插入补充知识卡片。"
+policy:
+  allow_implicit_invocation: true

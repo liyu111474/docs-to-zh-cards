@@ -1,0 +1,16 @@
+# Local backups and Python bytecode
+/archive/
+**/__pycache__/
+*.pyc
+
+# Keep reviewed verification evidence; ignore all other verification artifacts
+/.verification/*
+!/.verification/skill-review.md
+!/.verification/viewer-checks-full.json
+!/.verification/desktop-full.png
+!/.verification/mobile-full.png
+!/.verification/installation-full.png
+
+# Temporary output from the test suite and document generator
+/.cards-test-*/
+*.tmp

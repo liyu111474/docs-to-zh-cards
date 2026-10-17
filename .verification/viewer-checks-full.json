@@ -1,0 +1,50 @@
+{
+  "desktop": {
+    "pages": 6,
+    "homepage": true,
+    "noRemoteAssets": true
+  },
+  "supplementalToggle": true,
+  "searchDoesNotHideBody": true,
+  "mobile": {
+    "width": 390,
+    "collapsedDirectory": true
+  },
+  "documents": [
+    {
+      "title": "Streamlit 文档",
+      "blocks": 16,
+      "officialCodeBlocks": 0
+    },
+    {
+      "title": "通过命令行安装",
+      "blocks": 35,
+      "officialCodeBlocks": 12
+    },
+    {
+      "title": "基础概念",
+      "blocks": 92,
+      "officialCodeBlocks": 18
+    },
+    {
+      "title": "创建第一个应用",
+      "blocks": 75,
+      "officialCodeBlocks": 20
+    },
+    {
+      "title": "st.write",
+      "blocks": 8,
+      "officialCodeBlocks": 4
+    },
+    {
+      "title": "st.button",
+      "blocks": 13,
+      "officialCodeBlocks": 3
+    }
+  ],
+  "python": {
+    "blocks": 9,
+    "officialCodeBlocks": 42
+  },
+  "runtimeErrors": []
+}

@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Python 入门介绍 · 中文文档</title>
+<style></style>
+<style>
+html{scroll-behavior:auto}body{margin:0!important;background:#fff!important;color:#262730;font:16px/1.75 "Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}a{color:#0068c9}a:hover{text-decoration:underline}button,input{font:inherit}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #0068c9;outline-offset:3px}[hidden]{display:none!important}
+.d2c-layout{max-width:1760px;margin:auto;display:grid;grid-template-columns:290px minmax(0,1fr);gap:44px;padding:24px 48px 60px}.d2c-sidebar{position:sticky;top:20px;align-self:start;max-height:calc(100vh - 40px);overflow:auto;padding-right:20px;border-right:1px solid #f1f2f6;font-size:14px}.d2c-home{display:block;color:#31333f;font-weight:700;padding:6px 0 12px}.d2c-nav-group{margin-bottom:26px}.d2c-nav-group h2{font:700 17px/1.4 "Microsoft YaHei",Arial,sans-serif;margin:10px 0 12px;display:flex;align-items:center;gap:12px;color:#555865}.d2c-nav-group h2:before{content:"";width:25px;height:25px;display:block;background:#ff9f1a;border-radius:5px}.d2c-color-1 h2:before{background:#803df5}.d2c-color-2 h2:before{background:#00b8df}.d2c-color-3 h2:before{background:#1b7de8}.d2c-nav-group summary{cursor:pointer;padding:6px 5px 6px 14px;color:#31333f}.d2c-page-link{display:block;margin:3px 0;padding:6px 8px 6px 28px;text-decoration:none;color:#535866;font-size:13px;line-height:1.65;overflow-wrap:anywhere}.d2c-page-link small{font-size:10px;color:#888;margin-left:8px}.d2c-current{background:#f0f2f6;color:#0068c9;border-radius:4px}.d2c-mobile-summary{display:none}
+.d2c-main{min-width:0}.d2c-toolbar{display:flex;gap:20px;align-items:center;justify-content:space-between;font-size:12px;color:#6b6f78;margin-bottom:22px;border-bottom:1px solid #f1f2f6;padding-bottom:12px;flex-wrap:wrap}.d2c-toolbar label{display:flex;align-items:center;gap:7px;white-space:nowrap}.d2c-toolbar input[type=checkbox]{accent-color:#803df5}.d2c-search{border:1px solid #d5d9e1;border-radius:5px;padding:6px 10px;max-width:250px;font-size:13px}.d2c-progress{font-size:12px}.d2c-progress summary{cursor:pointer}.d2c-progress-panel{position:absolute;right:24px;z-index:10;background:white;box-shadow:0 4px 25px #0002;border:1px solid #eee;padding:18px;width:min(560px,90vw);max-height:65vh;overflow:auto}.d2c-progress-panel p{font-size:12px}.d2c-progress-panel ul,.d2c-pending-list{list-style:none;margin:0;padding:0}.d2c-progress-panel li,.d2c-pending-list li{padding:8px 0;border-bottom:1px solid #eee;font-size:13px}.d2c-progress-panel li span,.d2c-pending-list li span{display:inline-block;min-width:55px;color:#888}.d2c-pending-list li:target{background:#fff4d7;border:1px solid #ffb628;padding:16px;scroll-margin-top:20px}
+#d2c-document{min-width:0;font-size:16px;line-height:1.8}#d2c-document h1{font-size:40px;line-height:1.3;font-weight:700;margin:0 0 22px;letter-spacing:-.025em;color:#262730}#d2c-document h2{font-size:30px;line-height:1.4;font-weight:700;margin:40px 0 22px;color:#262730}#d2c-document h3{font-size:23px;line-height:1.4;font-weight:600;margin:28px 0 16px}#d2c-document h4{font-size:18px;font-weight:600;margin:18px 0 10px}#d2c-document p{margin:0 0 18px}#d2c-document ul,#d2c-document ol{padding-left:28px;margin-bottom:22px}#d2c-document li{margin-bottom:8px}#d2c-document pre{overflow:auto;white-space:pre;font:14px/1.7 Consolas,"Cascadia Code",monospace;background:#f0f2f6;padding:18px 20px;border-radius:6px;max-width:100%;margin:14px 0 24px}#d2c-document code,#d2c-document tt{font-family:Consolas,"Cascadia Code",monospace;font-size:.9em}#d2c-document :not(pre)>code{background:#f0f2f6;border-radius:3px;padding:2px 4px;color:#9b214e}#d2c-document pre code{background:transparent;color:inherit;padding:0;font-size:inherit}#d2c-document img{max-width:100%;height:auto}#d2c-document table{width:100%;border-collapse:collapse;margin:20px 0;display:block;overflow:auto;font-size:14px}#d2c-document th,#d2c-document td{padding:10px 14px;border-bottom:1px solid #ddd;text-align:left;vertical-align:top}#d2c-document th{font-weight:600;background:#fafafa}#d2c-document .online-demo{display:block;padding:16px;background:#f0f2f6;border:1px dashed #c6ccd5;border-radius:5px;margin:18px 0}
+#d2c-document .d2c-card{background:#faf8ff;border:1px solid #e6dafa;border-left:4px solid #803df5;border-radius:5px;padding:18px 22px;margin:26px 0;font-size:14px;color:#424355;box-shadow:none}#d2c-document .d2c-card-label{font-size:11px;font-weight:700;color:#7141b8;margin-bottom:8px}#d2c-document .d2c-card h3{font-size:18px;margin:0 0 10px}#d2c-document .d2c-card p{margin:0 0 10px}#d2c-document .d2c-card ol,#d2c-document .d2c-card ul{margin-bottom:8px}#d2c-document .d2c-card pre{font-size:13px}.d2c-source{border-top:1px solid #eee;margin-top:40px;padding-top:18px;font-size:12px;color:#777;line-height:1.8}.d2c-source a{margin-right:16px}.d2c-glossary{margin-top:25px;font-size:13px}.d2c-glossary summary{cursor:pointer}.d2c-glossary dl>div{display:flex;gap:20px;border-bottom:1px solid #eee;padding:6px}.d2c-glossary dt{width:180px;font-family:Consolas,monospace}.d2c-glossary dd{margin:0}
+@media(max-width:1100px){.d2c-layout{grid-template-columns:240px minmax(0,1fr);gap:28px;padding:24px}#d2c-document h1{font-size:34px}}@media(max-width:760px){.d2c-layout{display:block;padding:18px}.d2c-sidebar{position:static;max-height:none;border:0;padding:0;margin-bottom:20px}.d2c-mobile-summary{display:block;font-weight:700;cursor:pointer;padding:6px 0}#d2c-nav{max-height:50vh;overflow:auto}.d2c-toolbar{gap:12px;margin-bottom:20px}.d2c-search{max-width:180px}#d2c-document h1{font-size:28px}#d2c-document h2{font-size:25px}#d2c-document{font-size:15px}#d2c-document [class*=GridContainer]{grid-template-columns:1fr!important}#d2c-document [class*=inlineCallout_]{display:block!important}#d2c-document [class*=CalloutIcon]{margin-bottom:12px}#d2c-document .d2c-card{padding:16px}.d2c-progress-panel{right:18px}}
+@media print{.d2c-sidebar,.d2c-toolbar,.d2c-card,.d2c-progress{display:none!important}.d2c-layout{display:block;padding:0}#d2c-document pre{white-space:pre-wrap}.d2c-source{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="d2c-layout">
+<aside class="d2c-sidebar"><details id="d2c-toc" open><summary class="d2c-mobile-summary">文档目录</summary><nav id="d2c-nav" aria-label="文档目录"><a class="d2c-home" href="index.html">文档首页</a><section class="d2c-nav-group d2c-color-0"><h2>Python 教程</h2><details open><summary>基础语法</summary><a class="d2c-page-link d2c-current" data-search="Python 入门介绍  https://docs.python.org/3/tutorial/introduction.html 3. Python 非正式入门在下面的示例中，通过有无提示符（&gt;&gt;&gt;和…）来区分输入与输出。重现示例时，只需输入提示符之后的内容；不以提示符开头的行，是解释器输出。请注意，示例中次级提示符独占一行时，表示需要输入一个空行，以结束多行命令。可以使用“Copy”（复制）按钮：鼠标悬停或点击代码示例时，按钮会显示在右上角。它会去掉提示符并省略输出，便于把输入代码复制到解释器中。本手册中的许多示例，包括在交互提示符下输入的示例，都带有注释。Python 注释以井号 # 开始，直到当前物理行结束。注释可以位于行首，也可以跟在空白或代码后面，但字符串字面量内部不算注释。字符串里的井号只是普通字符。注释用于解释代码，不会被 Python 执行，输入示例时可以省略。下面是一些示例：# this is the first comment
+spam = 1  # and this is the second comment
+          # ... and now a third!
+text = &quot;# This is not a comment because it&#x27;s inside quotes.&quot;
+
+
+3.1. 把 Python 当作计算器
+先试几个简单的 Python 命令。启动解释器，等待主提示符 &gt;&gt;&gt; 出现，通常很快就会看到。
+
+3.1.1. 数字
+解释器就像一个简单的计算器：输入表达式，它就会输出计算结果。表达式的语法很直接，可以使用运算符 +, -, *和/ 进行算术运算，并使用括号（()）分组。例如：
+&gt;&gt;&gt; 2 + 2
+4
+&gt;&gt;&gt; 50 - 5*6
+20
+&gt;&gt;&gt; (50 - 5*6) / 4
+5.0
+&gt;&gt;&gt; 8 / 5  # division always returns a floating-point number
+1.6
+
+
+整数，例如 2, 4, 20，其类型为 int；带有小数部分的数，例如 5.0, 1.6，其类型为 float。本教程后面会继续介绍数值类型。
+除法（/）总是返回浮点数。若要进行向下取整除法并得到整数结果，可以使用 // 运算符；计算余数则使用 %:
+&gt;&gt;&gt; 17 / 3  # classic division returns a float
+5.666666666666667
+&gt;&gt;&gt;
+&gt;&gt;&gt; 17 // 3  # floor division discards the fractional part
+5
+&gt;&gt;&gt; 17 % 3  # the % operator returns the remainder of the division
+2
+&gt;&gt;&gt; 5 * 3 + 2  # floored quotient * divisor + remainder
+17
+
+
+在 Python 中，可以使用 ** 运算符计算幂 [1]:
+&gt;&gt;&gt; 5 ** 2  # 5 squared
+25
+&gt;&gt;&gt; 2 ** 7  # 2 to the power of 7
+128
+
+
+等号（=）用于给变量赋值。赋值之后，在出现下一个交互提示符之前，不会显示计算结果：
+&gt;&gt;&gt; width = 20
+&gt;&gt;&gt; height = 5 * 9
+&gt;&gt;&gt; width * height
+900
+
+
+如果变量尚未“定义”（即尚未赋值），尝试使用它就会报错：
+&gt;&gt;&gt; n  # try to access an undefined variable
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name &#x27;n&#x27; is not defined
+
+
+Python 完整支持浮点运算。对于混合类型的操作数，运算时会把整数操作数转换为浮点数：
+&gt;&gt;&gt; 4 * 3.75 - 1
+14.0
+
+
+在交互模式中，上一次输出的表达式结果会赋给变量 _。因此，把 Python 当作桌面计算器时，继续计算会更方便。例如：
+&gt;&gt;&gt; tax = 12.5 / 100
+&gt;&gt;&gt; price = 100.50
+&gt;&gt;&gt; price * tax
+12.5625
+&gt;&gt;&gt; price + _
+113.0625
+&gt;&gt;&gt; round(_, 2)
+113.06
+
+
+用户应将这个变量视为只读。不要显式给它赋值，否则会创建一个同名的独立局部变量，遮蔽这个具有特殊行为的内置变量。
+除了 int和float，Python 也支持其他数值类型，例如 Decimal和Fraction。Python 还内置支持复数，用 j 或 J 后缀表示虚部，例如 3+5j).
+
+
+3.1.2. 文本
+Python 不仅可以处理数字，还可以处理文本。文本使用 str 类型表示，也称为“字符串”，它可以包含字符“!”、单词“rabbit”、名字“Paris”、句子“Got your back.”等。“Yay! :)”也属于文本。它们可以放在单引号（&#x27;...&#x27;）或双引号（&quot;...&quot;）中，效果相同 [2].
+&gt;&gt;&gt; &#x27;spam eggs&#x27;  # single quotes
+&#x27;spam eggs&#x27;
+&gt;&gt;&gt; &quot;Paris rabbit got your back :)! Yay!&quot;  # double quotes
+&#x27;Paris rabbit got your back :)! Yay!&#x27;
+&gt;&gt;&gt; &#x27;1975&#x27;  # digits and numerals enclosed in quotes are also strings
+&#x27;1975&#x27;
+
+
+要在文本中包含引号，需要在前面加上 \ 对它进行“转义”；也可以改用另一种引号：
+&gt;&gt;&gt; &#x27;doesn\&#x27;t&#x27;  # use \&#x27; to escape the single quote...
+&quot;doesn&#x27;t&quot;
+&gt;&gt;&gt; &quot;doesn&#x27;t&quot;  # ...or use double quotes instead
+&quot;doesn&#x27;t&quot;
+&gt;&gt;&gt; &#x27;&quot;Yes,&quot; they said.&#x27;
+&#x27;&quot;Yes,&quot; they said.&#x27;
+&gt;&gt;&gt; &quot;\&quot;Yes,\&quot; they said.&quot;
+&#x27;&quot;Yes,&quot; they said.&#x27;
+&gt;&gt;&gt; &#x27;&quot;Isn\&#x27;t,&quot; they said.&#x27;
+&#x27;&quot;Isn\&#x27;t,&quot; they said.&#x27;
+
+
+在 Python 交互环境中，字符串的定义形式与输出形式可能不同。print() 函数会去掉外层引号，并正确输出转义字符和特殊字符，从而得到更容易阅读的结果：
+&gt;&gt;&gt; s = &#x27;First line.\nSecond line.&#x27;  # \n means newline
+&gt;&gt;&gt; s  # without print(), special characters are included in the string
+&#x27;First line.\nSecond line.&#x27;
+&gt;&gt;&gt; print(s)  # with print(), special characters are interpreted, so \n produces new line
+First line.
+Second line.
+
+
+如果不希望以 \ 开头的字符被解释为特殊字符，可以使用原始字符串：在第一个引号前加上 r 即可。
+&gt;&gt;&gt; print(&#x27;C:\this\name&#x27;)  # here \t means tab, \n means newline
+C:      his
+ame
+&gt;&gt;&gt; print(r&#x27;C:\this\name&#x27;)  # note the r before the quote
+C:\this\name
+
+
+原始字符串有一个细节需要注意：它不能以奇数个 \ 字符结尾。更多信息及处理方法，请参阅常见问题中的相关条目。
+字符串字面量可以跨越多行。一种写法是使用三引号：&quot;&quot;&quot;...&quot;&quot;&quot; 或 &#x27;&#x27;&#x27;...&#x27;&#x27;&#x27;。换行符会自动包含在字符串中；不过，可以在行尾加上 \ 来避免包含换行符。下面的示例不会包含开头的换行：
+&gt;&gt;&gt; print(&quot;&quot;&quot;\
+... Usage: thingy [OPTIONS]
+...      -h                        Display this usage message
+...      -H hostname               Hostname to connect to
+... &quot;&quot;&quot;)
+Usage: thingy [OPTIONS]
+     -h                        Display this usage message
+     -H hostname               Hostname to connect to
+
+&gt;&gt;&gt;
+
+
+字符串可以通过 + 运算符连接，也可以通过以下运算符重复：*:
+&gt;&gt;&gt; # 3 times &#x27;un&#x27;, followed by &#x27;ium&#x27;
+&gt;&gt;&gt; 3 * &#x27;un&#x27; + &#x27;ium&#x27;
+&#x27;unununium&#x27;
+
+
+两个或多个相邻的字符串字面量，即由引号包围的文本，会自动连接起来。
+&gt;&gt;&gt; &#x27;Py&#x27; &#x27;thon&#x27;
+&#x27;Python&#x27;
+
+
+需要将长字符串拆开书写时，这个功能尤其有用：
+&gt;&gt;&gt; text = (&#x27;Put several strings within parentheses &#x27;
+...         &#x27;to have them joined together.&#x27;)
+&gt;&gt;&gt; text
+&#x27;Put several strings within parentheses to have them joined together.&#x27;
+
+
+不过，它只适用于两个字面量，不适用于变量或表达式：
+&gt;&gt;&gt; prefix = &#x27;Py&#x27;
+&gt;&gt;&gt; prefix &#x27;thon&#x27;  # can&#x27;t concatenate a variable and a string literal
+  File &quot;&lt;stdin&gt;&quot;, line 1
+    prefix &#x27;thon&#x27;
+           ^^^^^^
+SyntaxError: invalid syntax
+&gt;&gt;&gt; (&#x27;un&#x27; * 3) &#x27;ium&#x27;
+  File &quot;&lt;stdin&gt;&quot;, line 1
+    (&#x27;un&#x27; * 3) &#x27;ium&#x27;
+               ^^^^^
+SyntaxError: invalid syntax
+
+
+如果需要连接变量，或连接变量和字面量，请使用 +:
+&gt;&gt;&gt; prefix + &#x27;thon&#x27;
+&#x27;Python&#x27;
+
+
+字符串支持索引（下标），第一个字符的索引为 0。Python 没有单独的字符类型，一个字符就是长度为 1 的字符串：
+&gt;&gt;&gt; word = &#x27;Python&#x27;
+&gt;&gt;&gt; word[0]  # character in position 0
+&#x27;P&#x27;
+&gt;&gt;&gt; word[5]  # character in position 5
+&#x27;n&#x27;
+
+
+索引也可以是负数，表示从右侧开始计数：
+&gt;&gt;&gt; word[-1]  # last character
+&#x27;n&#x27;
+&gt;&gt;&gt; word[-2]  # second-last character
+&#x27;o&#x27;
+&gt;&gt;&gt; word[-6]
+&#x27;P&#x27;
+
+
+注意，因为 -0 与 0 相同，所以负索引从 -1 开始。
+除了索引，也支持切片。索引用于获取单个字符，而切片可以获取子字符串：
+&gt;&gt;&gt; word[0:2]  # characters from position 0 (included) to 2 (excluded)
+&#x27;Py&#x27;
+&gt;&gt;&gt; word[2:5]  # characters from position 2 (included) to 5 (excluded)
+&#x27;tho&#x27;
+
+
+切片索引具有实用的默认值：省略起点时，默认从 0 开始；省略终点时，默认到字符串长度对应的位置结束。
+&gt;&gt;&gt; word[:2]   # character from the beginning to position 2 (excluded)
+&#x27;Py&#x27;
+&gt;&gt;&gt; word[4:]   # characters from position 4 (included) to the end
+&#x27;on&#x27;
+&gt;&gt;&gt; word[-2:]  # characters from the second-last (included) to the end
+&#x27;on&#x27;
+
+
+注意，切片始终包含起点，不包含终点。这样就能保证 s[:i] + s[i:] 总是等于 s:
+&gt;&gt;&gt; word[:2] + word[2:]
+&#x27;Python&#x27;
+&gt;&gt;&gt; word[:4] + word[4:]
+&#x27;Python&#x27;
+
+
+记忆切片的一种方法，是将索引理解为指向字符之间的位置：第一个字符左侧边界编号为 0。那么，一个长度为 n 的字符串，最后一个字符右侧边界的编号就是 n。例如：
+ +---+---+---+---+---+---+
+ | P | y | t | h | o | n |
+ +---+---+---+---+---+---+
+ 0   1   2   3   4   5   6
+-6  -5  -4  -3  -2  -1
+
+
+第一排数字表示字符串中从 0 到 6 的边界位置，第二排表示对应的负索引。从 i 到 j 的切片，包含标为 i和j 的两条边界之间的所有字符。
+对于非负索引，只要两个索引都在范围内，切片长度就是它们的差。例如，word[1:3] 的长度为 2。
+尝试使用过大的索引，会导致错误：
+&gt;&gt;&gt; word[42]  # the word only has 6 characters
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+IndexError: string index out of range
+
+
+不过，切片能够妥善处理超出范围的索引：
+&gt;&gt;&gt; word[4:42]
+&#x27;on&#x27;
+&gt;&gt;&gt; word[42:]
+&#x27;&#x27;
+
+
+Python 字符串不能被修改，因为它们是不可变的。因此，给字符串的某个索引位置赋值会报错：
+&gt;&gt;&gt; word[0] = &#x27;J&#x27;
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: &#x27;str&#x27; object does not support item assignment
+&gt;&gt;&gt; word[2:] = &#x27;py&#x27;
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: &#x27;str&#x27; object does not support item assignment
+
+
+如果需要不同的字符串，应当创建一个新字符串：
+&gt;&gt;&gt; &#x27;J&#x27; + word[1:]
+&#x27;Jython&#x27;
+&gt;&gt;&gt; word[:2] + &#x27;py&#x27;
+&#x27;Pypy&#x27;
+
+
+内置函数 len() 返回字符串长度：
+&gt;&gt;&gt; s = &#x27;supercalifragilisticexpialidocious&#x27;
+&gt;&gt;&gt; len(s)
+34
+
+
+
+另请参阅
+
+文本序列类型——str字符串属于序列类型，支持这类类型共有的常见操作。
+
+字符串方法字符串提供了大量用于基本转换和查找的方法。
+
+f 字符串在字符串字面量中嵌入表达式。
+
+格式化字符串语法关于使用下列方法进行字符串格式化的信息：str.format().
+
+printf 风格的字符串格式化字符串位于 % 运算符左侧时所使用的旧式格式化操作，详见此处。
+
+
+
+
+
+3.1.3. 列表
+Python 有多种复合数据类型，用来将其他值组合起来。其中最通用的是列表：把用逗号分隔的值（元素）放在方括号中即可。列表可以包含不同类型的元素，但通常其中的元素都具有相同类型。
+&gt;&gt;&gt; squares = [1, 4, 9, 16, 25]
+&gt;&gt;&gt; squares
+[1, 4, 9, 16, 25]
+
+
+和字符串及其他内置序列类型一样，列表也可以使用索引和切片：
+&gt;&gt;&gt; squares[0]  # indexing returns the item
+1
+&gt;&gt;&gt; squares[-1]
+25
+&gt;&gt;&gt; squares[-3:]  # slicing returns a new list
+[9, 16, 25]
+
+
+列表也支持连接等操作：
+&gt;&gt;&gt; squares + [36, 49, 64, 81, 100]
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+
+字符串是不可变的，而列表属于可变类型，也就是说，可以修改它的内容：
+&gt;&gt;&gt; cubes = [1, 8, 27, 65, 125]  # something&#x27;s wrong here
+&gt;&gt;&gt; 4 ** 3  # the cube of 4 is 64, not 65!
+64
+&gt;&gt;&gt; cubes[3] = 64  # replace the wrong value
+&gt;&gt;&gt; cubes
+[1, 8, 27, 64, 125]
+
+
+也可以使用 list.append() 方法在列表末尾添加新元素。稍后还会进一步介绍方法。
+&gt;&gt;&gt; cubes.append(216)  # add the cube of 6
+&gt;&gt;&gt; cubes.append(7 ** 3)  # and the cube of 7
+&gt;&gt;&gt; cubes
+[1, 8, 27, 64, 125, 216, 343]
+
+
+Python 中的简单赋值永远不会复制数据。把列表赋给变量时，变量引用的是现有列表。通过某个变量对列表所做的修改，也会被其他引用同一列表的变量看到：
+&gt;&gt;&gt; rgb = [&quot;Red&quot;, &quot;Green&quot;, &quot;Blue&quot;]
+&gt;&gt;&gt; rgba = rgb
+&gt;&gt;&gt; id(rgb) == id(rgba)  # they reference the same object
+True
+&gt;&gt;&gt; rgba.append(&quot;Alph&quot;)
+&gt;&gt;&gt; rgb
+[&quot;Red&quot;, &quot;Green&quot;, &quot;Blue&quot;, &quot;Alph&quot;]
+
+
+所有切片操作都会返回包含指定元素的新列表。因此，下面的切片会返回列表的浅复制：
+&gt;&gt;&gt; correct_rgba = rgba[:]
+&gt;&gt;&gt; correct_rgba[-1] = &quot;Alpha&quot;
+&gt;&gt;&gt; correct_rgba
+[&quot;Red&quot;, &quot;Green&quot;, &quot;Blue&quot;, &quot;Alpha&quot;]
+&gt;&gt;&gt; rgba
+[&quot;Red&quot;, &quot;Green&quot;, &quot;Blue&quot;, &quot;Alph&quot;]
+
+
+也可以给切片赋值，甚至由此改变列表长度，或将列表彻底清空：
+&gt;&gt;&gt; letters = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;, &#x27;g&#x27;]
+&gt;&gt;&gt; letters
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;, &#x27;g&#x27;]
+&gt;&gt;&gt; # replace some values
+&gt;&gt;&gt; letters[2:5] = [&#x27;C&#x27;, &#x27;D&#x27;, &#x27;E&#x27;]
+&gt;&gt;&gt; letters
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;C&#x27;, &#x27;D&#x27;, &#x27;E&#x27;, &#x27;f&#x27;, &#x27;g&#x27;]
+&gt;&gt;&gt; # now remove them
+&gt;&gt;&gt; letters[2:5] = []
+&gt;&gt;&gt; letters
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;f&#x27;, &#x27;g&#x27;]
+&gt;&gt;&gt; # clear the list by replacing all the elements with an empty list
+&gt;&gt;&gt; letters[:] = []
+&gt;&gt;&gt; letters
+[]
+
+
+内置函数 len() 同样适用于列表：
+&gt;&gt;&gt; letters = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]
+&gt;&gt;&gt; len(letters)
+4
+
+
+列表可以嵌套，也就是创建包含其他列表的列表。例如：
+&gt;&gt;&gt; a = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]
+&gt;&gt;&gt; n = [1, 2, 3]
+&gt;&gt;&gt; x = [a, n]
+&gt;&gt;&gt; x
+[[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;], [1, 2, 3]]
+&gt;&gt;&gt; x[0]
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]
+&gt;&gt;&gt; x[0][1]
+&#x27;b&#x27;
+
+
+
+
+3.2. 迈出编程的第一步
+当然，Python 不只能完成简单加法，还可以处理更复杂的任务。例如，可以编写如下代码，生成斐波那契数列的开头一段：
+&gt;&gt;&gt; # Fibonacci series:
+&gt;&gt;&gt; # the sum of two elements defines the next
+&gt;&gt;&gt; a, b = 0, 1
+&gt;&gt;&gt; while a &lt; 10:
+...     print(a)
+...     a, b = b, a+b
+...
+0
+1
+1
+2
+3
+5
+8
+
+
+这个示例引入了几个新特性。
+
+第一行包含多重赋值：变量 a和b 同时分别得到新值 0 和 1。最后一行再次使用这一方式，展示了一个规则：任何赋值发生之前，右侧的表达式都会先完成求值；这些表达式按从左到右的顺序求值。
+while 循环会在条件（这里是 a &lt; 10）为真时持续执行。与 C 一样，在 Python 中，任何非零整数都为真，零为假。条件也可以是字符串、列表或任意序列：长度非零时为真，空序列为假。本示例使用简单的比较作为判断。标准比较运算符的写法与 C 一样：&lt;（小于）、&gt;（大于）、==（等于）、&lt;=（小于或等于）、&gt;=（大于或等于）以及 !=（不等于）。
+循环体需要使用缩进：缩进是 Python 对语句进行分组的方式。在交互提示符下，每一行缩进都需要输入制表符或空格。实际工作中，较复杂的 Python 程序通常在文本编辑器中编写，常见编辑器都支持自动缩进。在交互模式中输入复合语句后，需要再输入一个空行表示结束，因为解析器无法判断你是否已经写完最后一行。注意，同一个基本代码块中的各行必须使用相同的缩进量。
+print() 函数会输出传入的参数值。与直接输入表达式不同，它在处理多个参数、浮点数和字符串时有专门的显示行为：打印字符串时不带引号，各项之间插入空格，因此可以方便地格式化输出，例如：
+&gt;&gt;&gt; i = 256*256
+&gt;&gt;&gt; print(&#x27;The value of i is&#x27;, i)
+The value of i is 65536
+
+
+关键字参数 end 可以取消输出后的换行，或把结尾替换成其他字符串：
+&gt;&gt;&gt; a, b = 0, 1
+&gt;&gt;&gt; while a &lt; 1000:
+...     print(a, end=&#x27;,&#x27;)
+...     a, b = b, a+b
+...
+0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,
+
+
+
+
+脚注
+
+
+[1]
+因为 ** 的优先级高于 -, -3**2，所以会被解释为 -(3**2)，得到的结果是 -9。如果希望得到 9，可以使用 (-3)**2.
+
+
+[2]
+与其他语言不同，\n 等特殊字符放在单引号（&#x27;...&#x27;）和双引号（&quot;...&quot;）中时，含义相同。两者唯一的区别是：在单引号内部，不需要转义 &quot;，但必须转义 \&#x27;；双引号内部则相反。
+
+
+" href="page-dcff5d405c8a.html">Python 入门介绍</a></details></section></nav><p id="d2c-no-results" hidden>没有匹配的文档。</p></details></aside>
+<main class="d2c-main">
+<div class="d2c-toolbar"><input id="d2c-search" class="d2c-search" type="search" aria-label="搜索文档" placeholder="搜索中文、英文或 API"><label><input id="d2c-show-cards" type="checkbox" checked>显示补充讲解</label><details class="d2c-progress"><summary>译文进度 1 / 1</summary><div class="d2c-progress-panel"><p>2026-10-17 读取 Python 官方教程的入门介绍页，用于验证其他文档站点。仅整理这一个页面，不代表 Python 全站目录或全部内容。</p><p>读取失败：0 页</p><p><a href="https://docs.python.org/3/tutorial/introduction.html" target="_blank" rel="noopener noreferrer">来源 1</a></p><ul><li id="pending-introduction"><span>已翻译</span> Python 入门介绍 <a href="https://docs.python.org/3/tutorial/introduction.html" target="_blank" rel="noopener noreferrer">原文</a></li></ul></div></details></div>
+<article id="d2c-document" class="content"><span id="tut-informal" data-block-id="b001"></span><h1 data-block-id="b002"><span class="section-number">3. </span>Python 非正式入门</h1><p data-block-id="b003">在下面的示例中，通过有无提示符（<a class="reference internal" href="https://docs.python.org/3/glossary.html#term-0"><span class="xref std std-term">&gt;&gt;&gt;</span></a>和<a class="reference internal" href="https://docs.python.org/3/glossary.html#term-..."><span class="xref std std-term">…</span></a>）来区分输入与输出。重现示例时，只需输入提示符之后的内容；不以提示符开头的行，是解释器输出。请注意，示例中次级提示符独占一行时，表示需要输入一个空行，以结束多行命令。</p><p data-block-id="b004">可以使用“Copy”（复制）按钮：鼠标悬停或点击代码示例时，按钮会显示在右上角。它会去掉提示符并省略输出，便于把输入代码复制到解释器中。</p><p id="index-0" data-block-id="b005">本手册中的许多示例，包括在交互提示符下输入的示例，都带有注释。Python 注释以井号 <code class="docutils literal notranslate"><span class="pre">#</span></code> 开始，直到当前物理行结束。注释可以位于行首，也可以跟在空白或代码后面，但字符串字面量内部不算注释。字符串里的井号只是普通字符。注释用于解释代码，不会被 Python 执行，输入示例时可以省略。</p><p data-block-id="b006">下面是一些示例：</p><div class="highlight-python3 notranslate" data-block-id="b007"><div class="highlight"><pre><span></span><span class="c1"># this is the first comment</span>
+<span class="n">spam</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># and this is the second comment</span>
+          <span class="c1"># ... and now a third!</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"# This is not a comment because it's inside quotes."</span>
+</pre></div>
+</div><section id="using-python-as-a-calculator" data-block-id="b008">
+<span id="tut-calculator"></span><h2><span class="section-number">3.1. </span>把 Python 当作计算器</h2>
+<p>先试几个简单的 Python 命令。启动解释器，等待主提示符 <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> 出现，通常很快就会看到。</p>
+<section id="numbers">
+<span id="tut-numbers"></span><h3><span class="section-number">3.1.1. </span>数字</h3>
+<p>解释器就像一个简单的计算器：输入表达式，它就会输出计算结果。表达式的语法很直接，可以使用运算符 <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>和<code class="docutils literal notranslate"><span class="pre">/</span></code> 进行算术运算，并使用括号（<code class="docutils literal notranslate"><span class="pre">()</span></code>）分组。例如：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">50</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="mi">6</span>
+<span class="go">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">50</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
+<span class="go">5.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">8</span> <span class="o">/</span> <span class="mi">5</span>  <span class="c1"># division always returns a floating-point number</span>
+<span class="go">1.6</span>
+</pre></div>
+</div>
+<p>整数，例如 <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">20</span></code>，其类型为 <a class="reference internal" href="https://docs.python.org/3/builtins/functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>；带有小数部分的数，例如 <code class="docutils literal notranslate"><span class="pre">5.0</span></code>, <code class="docutils literal notranslate"><span class="pre">1.6</span></code>，其类型为 <a class="reference internal" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>。本教程后面会继续介绍数值类型。</p>
+<p>除法（<code class="docutils literal notranslate"><span class="pre">/</span></code>）总是返回浮点数。若要进行<a class="reference internal" href="https://docs.python.org/3/glossary.html#term-floor-division"><span class="xref std std-term">向下取整除法</span></a>并得到整数结果，可以使用 <code class="docutils literal notranslate"><span class="pre">//</span></code> 运算符；计算余数则使用 <code class="docutils literal notranslate"><span class="pre">%</span></code>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">17</span> <span class="o">/</span> <span class="mi">3</span>  <span class="c1"># classic division returns a float</span>
+<span class="go">5.666666666666667</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">17</span> <span class="o">//</span> <span class="mi">3</span>  <span class="c1"># floor division discards the fractional part</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">17</span> <span class="o">%</span> <span class="mi">3</span>  <span class="c1"># the % operator returns the remainder of the division</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span>  <span class="c1"># floored quotient * divisor + remainder</span>
+<span class="go">17</span>
+</pre></div>
+</div>
+<p>在 Python 中，可以使用 <code class="docutils literal notranslate"><span class="pre">**</span></code> 运算符计算幂 <a class="footnote-reference brackets" href="page-dcff5d405c8a.html#id3" id="id1"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># 5 squared</span>
+<span class="go">25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">**</span> <span class="mi">7</span>  <span class="c1"># 2 to the power of 7</span>
+<span class="go">128</span>
+</pre></div>
+</div>
+<p>等号（<code class="docutils literal notranslate"><span class="pre">=</span></code>）用于给变量赋值。赋值之后，在出现下一个交互提示符之前，不会显示计算结果：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">width</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+<span class="go">900</span>
+</pre></div>
+</div>
+<p>如果变量尚未“定义”（即尚未赋值），尝试使用它就会报错：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span>  <span class="c1"># try to access an undefined variable</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">NameError</span>: <span class="n">name 'n' is not defined</span>
+</pre></div>
+</div>
+<p>Python 完整支持浮点运算。对于混合类型的操作数，运算时会把整数操作数转换为浮点数：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">4</span> <span class="o">*</span> <span class="mf">3.75</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="go">14.0</span>
+</pre></div>
+</div>
+<p>在交互模式中，上一次输出的表达式结果会赋给变量 <code class="docutils literal notranslate"><span class="pre">_</span></code>。因此，把 Python 当作桌面计算器时，继续计算会更方便。例如：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tax</span> <span class="o">=</span> <span class="mf">12.5</span> <span class="o">/</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">price</span> <span class="o">=</span> <span class="mf">100.50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">price</span> <span class="o">*</span> <span class="n">tax</span>
+<span class="go">12.5625</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">price</span> <span class="o">+</span> <span class="n">_</span>
+<span class="go">113.0625</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">113.06</span>
+</pre></div>
+</div>
+<p>用户应将这个变量视为只读。不要显式给它赋值，否则会创建一个同名的独立局部变量，遮蔽这个具有特殊行为的内置变量。</p>
+<p>除了 <a class="reference internal" href="https://docs.python.org/3/builtins/functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>和<a class="reference internal" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>，Python 也支持其他数值类型，例如 <a class="reference internal" href="https://docs.python.org/3/library/decimal.html#decimal.Decimal" title="decimal.Decimal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Decimal</span></code></a>和<a class="reference internal" href="https://docs.python.org/3/library/fractions.html#fractions.Fraction" title="fractions.Fraction"><code class="xref py py-class docutils literal notranslate"><span class="pre">Fraction</span></code></a>。Python 还内置支持<a class="reference internal" href="https://docs.python.org/3/builtins/stdtypes.html#typesnumeric"><span class="std std-ref">复数</span></a>，用 <code class="docutils literal notranslate"><span class="pre">j</span></code> 或 <code class="docutils literal notranslate"><span class="pre">J</span></code> 后缀表示虚部，例如 <code class="docutils literal notranslate"><span class="pre">3+5j</span></code>).</p>
+</section>
+<section id="text">
+<span id="tut-strings"></span><h3><span class="section-number">3.1.2. </span>文本</h3>
+<p>Python 不仅可以处理数字，还可以处理文本。文本使用 <a class="reference internal" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> 类型表示，也称为“字符串”，它可以包含字符“<code class="docutils literal notranslate"><span class="pre">!</span></code>”、单词“<code class="docutils literal notranslate"><span class="pre">rabbit</span></code>”、名字“<code class="docutils literal notranslate"><span class="pre">Paris</span></code>”、句子“<code class="docutils literal notranslate"><span class="pre">Got</span> <span class="pre">your</span> <span class="pre">back.</span></code>”等。“<code class="docutils literal notranslate"><span class="pre">Yay!</span> <span class="pre">:)</span></code>”也属于文本。它们可以放在单引号（<code class="docutils literal notranslate"><span class="pre">'...'</span></code>）或双引号（<code class="docutils literal notranslate"><span class="pre">"..."</span></code>）中，效果相同 <a class="footnote-reference brackets" href="page-dcff5d405c8a.html#id4" id="id2"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">'spam eggs'</span>  <span class="c1"># single quotes</span>
+<span class="go">'spam eggs'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"Paris rabbit got your back :)! Yay!"</span>  <span class="c1"># double quotes</span>
+<span class="go">'Paris rabbit got your back :)! Yay!'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">'1975'</span>  <span class="c1"># digits and numerals enclosed in quotes are also strings</span>
+<span class="go">'1975'</span>
+</pre></div>
+</div>
+<p>要在文本中包含引号，需要在前面加上 <code class="docutils literal notranslate"><span class="pre">\</span></code> 对它进行“转义”；也可以改用另一种引号：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">'doesn</span><span class="se">\'</span><span class="s1">t'</span>  <span class="c1"># use \' to escape the single quote...</span>
+<span class="go">"doesn't"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"doesn't"</span>  <span class="c1"># ...or use double quotes instead</span>
+<span class="go">"doesn't"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">'"Yes," they said.'</span>
+<span class="go">'"Yes," they said.'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"</span><span class="se">\"</span><span class="s2">Yes,</span><span class="se">\"</span><span class="s2"> they said."</span>
+<span class="go">'"Yes," they said.'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">'"Isn</span><span class="se">\'</span><span class="s1">t," they said.'</span>
+<span class="go">'"Isn\'t," they said.'</span>
+</pre></div>
+</div>
+<p>在 Python 交互环境中，字符串的定义形式与输出形式可能不同。<a class="reference internal" href="https://docs.python.org/3/builtins/functions.html#print" title="print"><code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code></a> 函数会去掉外层引号，并正确输出转义字符和特殊字符，从而得到更容易阅读的结果：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">'First line.</span><span class="se">\n</span><span class="s1">Second line.'</span>  <span class="c1"># \n means newline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>  <span class="c1"># without print(), special characters are included in the string</span>
+<span class="go">'First line.\nSecond line.'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="c1"># with print(), special characters are interpreted, so \n produces new line</span>
+<span class="go">First line.</span>
+<span class="go">Second line.</span>
+</pre></div>
+</div>
+<p>如果不希望以 <code class="docutils literal notranslate"><span class="pre">\</span></code> 开头的字符被解释为特殊字符，可以使用<em>原始字符串</em>：在第一个引号前加上 <code class="docutils literal notranslate"><span class="pre">r</span></code> 即可。</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">'C:</span><span class="se">\t</span><span class="s1">his</span><span class="se">\n</span><span class="s1">ame'</span><span class="p">)</span>  <span class="c1"># here \t means tab, \n means newline</span>
+<span class="go">C:      his</span>
+<span class="go">ame</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s1">'C:\this\name'</span><span class="p">)</span>  <span class="c1"># note the r before the quote</span>
+<span class="go">C:\this\name</span>
+</pre></div>
+</div>
+<p>原始字符串有一个细节需要注意：它不能以奇数个 <code class="docutils literal notranslate"><span class="pre">\</span></code> 字符结尾。更多信息及处理方法，请参阅<a class="reference internal" href="https://docs.python.org/3/faq/programming.html#faq-programming-raw-string-backslash"><span class="std std-ref">常见问题中的相关条目</span></a>。</p>
+<p>字符串字面量可以跨越多行。一种写法是使用三引号：<code class="docutils literal notranslate"><span class="pre">"""..."""</span></code> 或 <code class="docutils literal notranslate"><span class="pre">'''...'''</span></code>。换行符会自动包含在字符串中；不过，可以在行尾加上 <code class="docutils literal notranslate"><span class="pre">\</span></code> 来避免包含换行符。下面的示例不会包含开头的换行：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">"""</span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">Usage: thingy [OPTIONS]</span>
+<span class="gp">... </span><span class="s2">     -h                        Display this usage message</span>
+<span class="gp">... </span><span class="s2">     -H hostname               Hostname to connect to</span>
+<span class="gp">... </span><span class="s2">"""</span><span class="p">)</span>
+<span class="go">Usage: thingy [OPTIONS]</span>
+<span class="go">     -h                        Display this usage message</span>
+<span class="go">     -H hostname               Hostname to connect to</span>
+
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>字符串可以通过 <code class="docutils literal notranslate"><span class="pre">+</span></code> 运算符连接，也可以通过以下运算符重复：<code class="docutils literal notranslate"><span class="pre">*</span></code>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 3 times 'un', followed by 'ium'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">*</span> <span class="s1">'un'</span> <span class="o">+</span> <span class="s1">'ium'</span>
+<span class="go">'unununium'</span>
+</pre></div>
+</div>
+<p>两个或多个相邻的<em>字符串字面量</em>，即由引号包围的文本，会自动连接起来。</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">'Py'</span> <span class="s1">'thon'</span>
+<span class="go">'Python'</span>
+</pre></div>
+</div>
+<p>需要将长字符串拆开书写时，这个功能尤其有用：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'Put several strings within parentheses '</span>
+<span class="gp">... </span>        <span class="s1">'to have them joined together.'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span>
+<span class="go">'Put several strings within parentheses to have them joined together.'</span>
+</pre></div>
+</div>
+<p>不过，它只适用于两个字面量，不适用于变量或表达式：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prefix</span> <span class="o">=</span> <span class="s1">'Py'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prefix</span> <span class="s1">'thon'</span>  <span class="c1"># can't concatenate a variable and a string literal</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>
+<span class="w">    </span><span class="n">prefix</span> <span class="s1">'thon'</span>
+<span class="w">           </span><span class="pm">^^^^^^</span>
+<span class="gr">SyntaxError</span>: <span class="n">invalid syntax</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="s1">'un'</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="s1">'ium'</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">'un'</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="s1">'ium'</span>
+<span class="w">               </span><span class="pm">^^^^^</span>
+<span class="gr">SyntaxError</span>: <span class="n">invalid syntax</span>
+</pre></div>
+</div>
+<p>如果需要连接变量，或连接变量和字面量，请使用 <code class="docutils literal notranslate"><span class="pre">+</span></code>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prefix</span> <span class="o">+</span> <span class="s1">'thon'</span>
+<span class="go">'Python'</span>
+</pre></div>
+</div>
+<p>字符串支持<em>索引</em>（下标），第一个字符的索引为 0。Python 没有单独的字符类型，一个字符就是长度为 1 的字符串：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span> <span class="o">=</span> <span class="s1">'Python'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># character in position 0</span>
+<span class="go">'P'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>  <span class="c1"># character in position 5</span>
+<span class="go">'n'</span>
+</pre></div>
+</div>
+<p>索引也可以是负数，表示从右侧开始计数：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># last character</span>
+<span class="go">'n'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># second-last character</span>
+<span class="go">'o'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
+<span class="go">'P'</span>
+</pre></div>
+</div>
+<p>注意，因为 -0 与 0 相同，所以负索引从 -1 开始。</p>
+<p>除了索引，也支持<em>切片</em>。索引用于获取单个字符，而<em>切片</em>可以获取子字符串：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># characters from position 0 (included) to 2 (excluded)</span>
+<span class="go">'Py'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>  <span class="c1"># characters from position 2 (included) to 5 (excluded)</span>
+<span class="go">'tho'</span>
+</pre></div>
+</div>
+<p>切片索引具有实用的默认值：省略起点时，默认从 0 开始；省略终点时，默认到字符串长度对应的位置结束。</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>   <span class="c1"># character from the beginning to position 2 (excluded)</span>
+<span class="go">'Py'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>   <span class="c1"># characters from position 4 (included) to the end</span>
+<span class="go">'on'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>  <span class="c1"># characters from the second-last (included) to the end</span>
+<span class="go">'on'</span>
+</pre></div>
+</div>
+<p>注意，切片始终包含起点，不包含终点。这样就能保证 <code class="docutils literal notranslate"><span class="pre">s[:i]</span> <span class="pre">+</span> <span class="pre">s[i:]</span></code> 总是等于 <code class="docutils literal notranslate"><span class="pre">s</span></code>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="go">'Python'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>
+<span class="go">'Python'</span>
+</pre></div>
+</div>
+<p>记忆切片的一种方法，是将索引理解为指向字符<em>之间</em>的位置：第一个字符左侧边界编号为 0。那么，一个长度为 <em>n</em> 的字符串，最后一个字符右侧边界的编号就是 <em>n</em>。例如：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span> <span class="o">+---+---+---+---+---+---+</span>
+ <span class="o">|</span> <span class="n">P</span> <span class="o">|</span> <span class="n">y</span> <span class="o">|</span> <span class="n">t</span> <span class="o">|</span> <span class="n">h</span> <span class="o">|</span> <span class="n">o</span> <span class="o">|</span> <span class="n">n</span> <span class="o">|</span>
+ <span class="o">+---+---+---+---+---+---+</span>
+ <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>   <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>
+<span class="o">-</span><span class="mi">6</span>  <span class="o">-</span><span class="mi">5</span>  <span class="o">-</span><span class="mi">4</span>  <span class="o">-</span><span class="mi">3</span>  <span class="o">-</span><span class="mi">2</span>  <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>第一排数字表示字符串中从 0 到 6 的边界位置，第二排表示对应的负索引。从 <em>i</em> 到 <em>j</em> 的切片，包含标为 <em>i</em>和<em>j</em> 的两条边界之间的所有字符。</p>
+<p>对于非负索引，只要两个索引都在范围内，切片长度就是它们的差。例如，<code class="docutils literal notranslate"><span class="pre">word[1:3]</span></code> 的长度为 2。</p>
+<p>尝试使用过大的索引，会导致错误：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="mi">42</span><span class="p">]</span>  <span class="c1"># the word only has 6 characters</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">IndexError</span>: <span class="n">string index out of range</span>
+</pre></div>
+</div>
+<p>不过，切片能够妥善处理超出范围的索引：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">42</span><span class="p">]</span>
+<span class="go">'on'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="mi">42</span><span class="p">:]</span>
+<span class="go">''</span>
+</pre></div>
+</div>
+<p>Python 字符串不能被修改，因为它们是<a class="reference internal" href="https://docs.python.org/3/glossary.html#term-immutable"><span class="xref std std-term">不可变的</span></a>。因此，给字符串的某个索引位置赋值会报错：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'J'</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">'str' object does not support item assignment</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="s1">'py'</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">'str' object does not support item assignment</span>
+</pre></div>
+</div>
+<p>如果需要不同的字符串，应当创建一个新字符串：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">'J'</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="go">'Jython'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'py'</span>
+<span class="go">'Pypy'</span>
+</pre></div>
+</div>
+<p>内置函数 <a class="reference internal" href="https://docs.python.org/3/builtins/functions.html#len" title="len"><code class="xref py py-func docutils literal notranslate"><span class="pre">len()</span></code></a> 返回字符串长度：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">'supercalifragilisticexpialidocious'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">34</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">另请参阅</p>
+<dl class="simple">
+<dt><a class="reference internal" href="https://docs.python.org/3/builtins/stdtypes.html#textseq"><span class="std std-ref">文本序列类型——str</span></a></dt><dd><p>字符串属于<em>序列类型</em>，支持这类类型共有的常见操作。</p>
+</dd>
+<dt><a class="reference internal" href="https://docs.python.org/3/builtins/stdtypes.html#string-methods"><span class="std std-ref">字符串方法</span></a></dt><dd><p>字符串提供了大量用于基本转换和查找的方法。</p>
+</dd>
+<dt><a class="reference internal" href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings"><span class="std std-ref">f 字符串</span></a></dt><dd><p>在字符串字面量中嵌入表达式。</p>
+</dd>
+<dt><a class="reference internal" href="https://docs.python.org/3/library/string.html#formatstrings"><span class="std std-ref">格式化字符串语法</span></a></dt><dd><p>关于使用下列方法进行字符串格式化的信息：<a class="reference internal" href="https://docs.python.org/3/builtins/stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a>.</p>
+</dd>
+<dt><a class="reference internal" href="https://docs.python.org/3/builtins/stdtypes.html#old-string-formatting"><span class="std std-ref">printf 风格的字符串格式化</span></a></dt><dd><p>字符串位于 <code class="docutils literal notranslate"><span class="pre">%</span></code> 运算符左侧时所使用的旧式格式化操作，详见此处。</p>
+</dd>
+</dl>
+</div>
+</section>
+<section id="lists">
+<span id="tut-lists"></span><h3><span class="section-number">3.1.3. </span>列表</h3>
+<p>Python 有多种<em>复合</em>数据类型，用来将其他值组合起来。其中最通用的是<em>列表</em>：把用逗号分隔的值（元素）放在方括号中即可。列表可以包含不同类型的元素，但通常其中的元素都具有相同类型。</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span>
+<span class="go">[1, 4, 9, 16, 25]</span>
+</pre></div>
+</div>
+<p>和字符串及其他内置<a class="reference internal" href="https://docs.python.org/3/glossary.html#term-sequence"><span class="xref std std-term">序列</span></a>类型一样，列表也可以使用索引和切片：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># indexing returns the item</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>  <span class="c1"># slicing returns a new list</span>
+<span class="go">[9, 16, 25]</span>
+</pre></div>
+</div>
+<p>列表也支持连接等操作：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span> <span class="o">+</span> <span class="p">[</span><span class="mi">36</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="go">[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</span>
+</pre></div>
+</div>
+<p>字符串是<a class="reference internal" href="https://docs.python.org/3/glossary.html#term-immutable"><span class="xref std std-term">不可变的</span></a>，而列表属于<a class="reference internal" href="https://docs.python.org/3/glossary.html#term-mutable"><span class="xref std std-term">可变</span></a>类型，也就是说，可以修改它的内容：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cubes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">125</span><span class="p">]</span>  <span class="c1"># something's wrong here</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">4</span> <span class="o">**</span> <span class="mi">3</span>  <span class="c1"># the cube of 4 is 64, not 65!</span>
+<span class="go">64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cubes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">64</span>  <span class="c1"># replace the wrong value</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cubes</span>
+<span class="go">[1, 8, 27, 64, 125]</span>
+</pre></div>
+</div>
+<p>也可以使用 <a class="reference internal" href="https://docs.python.org/3/builtins/stdtypes.html#list.append" title="list.append"><code class="xref py py-meth docutils literal notranslate"><span class="pre">list.append()</span></code></a> <em>方法</em>在列表末尾添加新元素。稍后还会进一步介绍方法。</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cubes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">216</span><span class="p">)</span>  <span class="c1"># add the cube of 6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cubes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">7</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># and the cube of 7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cubes</span>
+<span class="go">[1, 8, 27, 64, 125, 216, 343]</span>
+</pre></div>
+</div>
+<p>Python 中的简单赋值永远不会复制数据。把列表赋给变量时，变量引用的是<em>现有列表</em>。通过某个变量对列表所做的修改，也会被其他引用同一列表的变量看到：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Red"</span><span class="p">,</span> <span class="s2">"Green"</span><span class="p">,</span> <span class="s2">"Blue"</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgba</span> <span class="o">=</span> <span class="n">rgb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">rgb</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">rgba</span><span class="p">)</span>  <span class="c1"># they reference the same object</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgba</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"Alph"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span>
+<span class="go">["Red", "Green", "Blue", "Alph"]</span>
+</pre></div>
+</div>
+<p>所有切片操作都会返回包含指定元素的新列表。因此，下面的切片会返回列表的<a class="reference internal" href="https://docs.python.org/3/library/copy.html#shallow-vs-deep-copy"><span class="std std-ref">浅复制</span></a>：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">correct_rgba</span> <span class="o">=</span> <span class="n">rgba</span><span class="p">[:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">correct_rgba</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Alpha"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">correct_rgba</span>
+<span class="go">["Red", "Green", "Blue", "Alpha"]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgba</span>
+<span class="go">["Red", "Green", "Blue", "Alph"]</span>
+</pre></div>
+</div>
+<p>也可以给切片赋值，甚至由此改变列表长度，或将列表彻底清空：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'e'</span><span class="p">,</span> <span class="s1">'f'</span><span class="p">,</span> <span class="s1">'g'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span>
+<span class="go">['a', 'b', 'c', 'd', 'e', 'f', 'g']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># replace some values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'C'</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span>
+<span class="go">['a', 'b', 'C', 'D', 'E', 'f', 'g']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># now remove them</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span>
+<span class="go">['a', 'b', 'f', 'g']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># clear the list by replacing all the elements with an empty list</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>内置函数 <a class="reference internal" href="https://docs.python.org/3/builtins/functions.html#len" title="len"><code class="xref py py-func docutils literal notranslate"><span class="pre">len()</span></code></a> 同样适用于列表：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>列表可以嵌套，也就是创建包含其他列表的列表。例如：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">[['a', 'b', 'c'], [1, 2, 3]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">['a', 'b', 'c']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">'b'</span>
+</pre></div>
+</div>
+</section>
+</section><aside class="d2c-card" data-ai-explanation><div class="d2c-card-label">AI 补充讲解</div><h3>用 Python 做计算</h3><p>整数（int）与浮点数（float）可以直接参与算术运算。普通除法 / 与整除 // 的结果含义不同。</p><p><strong>什么时候用：</strong>先熟悉表达式，再写数据处理代码时。</p><ol><li>用 print 显示运算结果。</li><li>观察 /、// 和 % 分别得到商、向下取整的商与余数。</li></ol><ul><li>// 是向下取整，不能简单理解为所有情况下都截掉小数。</li></ul></aside><section id="first-steps-towards-programming" data-block-id="b009">
+<span id="tut-firststeps"></span><h2><span class="section-number">3.2. </span>迈出编程的第一步</h2>
+<p>当然，Python 不只能完成简单加法，还可以处理更复杂的任务。例如，可以编写如下代码，生成<a class="reference external" href="https://en.wikipedia.org/wiki/Fibonacci_sequence">斐波那契数列</a>的开头一段：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Fibonacci series:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># the sum of two elements defines the next</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="gp">...</span>
+<span class="go">0</span>
+<span class="go">1</span>
+<span class="go">1</span>
+<span class="go">2</span>
+<span class="go">3</span>
+<span class="go">5</span>
+<span class="go">8</span>
+</pre></div>
+</div>
+<p>这个示例引入了几个新特性。</p>
+<ul>
+<li><p>第一行包含<em>多重赋值</em>：变量 <code class="docutils literal notranslate"><span class="pre">a</span></code>和<code class="docutils literal notranslate"><span class="pre">b</span></code> 同时分别得到新值 0 和 1。最后一行再次使用这一方式，展示了一个规则：任何赋值发生之前，右侧的表达式都会先完成求值；这些表达式按从左到右的顺序求值。</p></li>
+<li><p><a class="reference internal" href="https://docs.python.org/3/reference/compound_stmts.html#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a> 循环会在条件（这里是 <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;</span> <span class="pre">10</span></code>）为真时持续执行。与 C 一样，在 Python 中，任何非零整数都为真，零为假。条件也可以是字符串、列表或任意序列：长度非零时为真，空序列为假。本示例使用简单的比较作为判断。标准比较运算符的写法与 C 一样：<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>（小于）、<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>（大于）、<code class="docutils literal notranslate"><span class="pre">==</span></code>（等于）、<code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>（小于或等于）、<code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>（大于或等于）以及 <code class="docutils literal notranslate"><span class="pre">!=</span></code>（不等于）。</p></li>
+<li><p><em>循环体</em>需要使用<em>缩进</em>：缩进是 Python 对语句进行分组的方式。在交互提示符下，每一行缩进都需要输入制表符或空格。实际工作中，较复杂的 Python 程序通常在文本编辑器中编写，常见编辑器都支持自动缩进。在交互模式中输入复合语句后，需要再输入一个空行表示结束，因为解析器无法判断你是否已经写完最后一行。注意，同一个基本代码块中的各行必须使用相同的缩进量。</p></li>
+<li><p><a class="reference internal" href="https://docs.python.org/3/builtins/functions.html#print" title="print"><code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code></a> 函数会输出传入的参数值。与直接输入表达式不同，它在处理多个参数、浮点数和字符串时有专门的显示行为：打印字符串时不带引号，各项之间插入空格，因此可以方便地格式化输出，例如：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="mi">256</span><span class="o">*</span><span class="mi">256</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">'The value of i is'</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="go">The value of i is 65536</span>
+</pre></div>
+</div>
+<p>关键字参数 <em>end</em> 可以取消输出后的换行，或把结尾替换成其他字符串：</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">','</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="gp">...</span>
+<span class="go">0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p class="rubric">脚注</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3">
+<span class="label"><span class="fn-bracket">[</span><a href="page-dcff5d405c8a.html#id1">1</a><span class="fn-bracket">]</span></span>
+<p>因为 <code class="docutils literal notranslate"><span class="pre">**</span></code> 的优先级高于 <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">-3**2</span></code>，所以会被解释为 <code class="docutils literal notranslate"><span class="pre">-(3**2)</span></code>，得到的结果是 <code class="docutils literal notranslate"><span class="pre">-9</span></code>。如果希望得到 <code class="docutils literal notranslate"><span class="pre">9</span></code>，可以使用 <code class="docutils literal notranslate"><span class="pre">(-3)**2</span></code>.</p>
+</aside>
+<aside class="footnote brackets" id="id4">
+<span class="label"><span class="fn-bracket">[</span><a href="page-dcff5d405c8a.html#id2">2</a><span class="fn-bracket">]</span></span>
+<p>与其他语言不同，<code class="docutils literal notranslate"><span class="pre">\n</span></code> 等特殊字符放在单引号（<code class="docutils literal notranslate"><span class="pre">'...'</span></code>）和双引号（<code class="docutils literal notranslate"><span class="pre">"..."</span></code>）中时，含义相同。两者唯一的区别是：在单引号内部，不需要转义 <code class="docutils literal notranslate"><span class="pre">"</span></code>，但必须转义 <code class="docutils literal notranslate"><span class="pre">\'</span></code>；双引号内部则相反。</p>
+</aside>
+</aside>
+</section><aside class="d2c-card" data-ai-explanation><div class="d2c-card-label">AI 补充讲解</div><h3>while：条件成立时重复执行</h3><p>while 会反复检查条件，并执行缩进的代码块。循环体中需要更新相关变量，让循环最终有机会结束。</p><p><strong>什么时候用：</strong>需要按条件重复处理，而不是只执行一次时。</p><ol><li>先给变量设置初始值。</li><li>编写 while 条件，并缩进循环体。</li><li>在循环体中更新变量。</li></ol><ul><li>同一代码块的缩进需要保持一致。</li></ul></aside></article>
+<div class="d2c-source"><a href="https://docs.python.org/3/tutorial/introduction.html" target="_blank" rel="noopener noreferrer">查看官方原文</a><a href="cards.md" download>Markdown 文档</a><div>来源读取时间：2026-10-17T15:46:26+08:00　文档版本：3.15.0</div></div>
+<details class="d2c-glossary"><summary>中英术语对照</summary><dl><div><dt>integer</dt><dd>整数</dd></div><div><dt>float</dt><dd>浮点数</dd></div><div><dt>string</dt><dd>字符串</dd></div><div><dt>list</dt><dd>列表</dd></div><div><dt>slice</dt><dd>切片</dd></div><div><dt>while loop</dt><dd>while 循环</dd></div></dl></details>
+</main></div>
+<script>
+(() => {
+  const toggle=document.getElementById('d2c-show-cards');
+  toggle.addEventListener('change',()=>document.querySelectorAll('[data-ai-explanation]').forEach(card=>card.hidden=!toggle.checked));
+  const input=document.getElementById('d2c-search');
+  const links=Array.from(document.querySelectorAll('.d2c-page-link'));
+  input.addEventListener('input',()=>{
+    const query=input.value.trim().toLowerCase();let count=0;
+    links.forEach(link=>{link.hidden=!link.dataset.search.toLowerCase().includes(query);if(!link.hidden)count++;});
+    document.querySelectorAll('.d2c-nav-group details').forEach(group=>{group.hidden=!Array.from(group.querySelectorAll('.d2c-page-link')).some(link=>!link.hidden);if(query&&!group.hidden)group.open=true;});
+    document.querySelectorAll('.d2c-nav-group').forEach(group=>group.hidden=!Array.from(group.querySelectorAll('.d2c-page-link')).some(link=>!link.hidden));
+    document.getElementById('d2c-no-results').hidden=count!==0;
+  });
+  const media=window.matchMedia('(max-width:760px)');
+  const resize=()=>document.getElementById('d2c-toc').open=!media.matches;
+  media.addEventListener('change',resize);resize();
+})();
+</script>
+</body></html>
+
